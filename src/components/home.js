@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 
 export default function Home(props) {
   const [photos, setPhotos] = useState({ data: [] });
@@ -8,49 +8,58 @@ export default function Home(props) {
   };
 
   const onSearch = (e) => {
+    e.preventDefault();
 
+    var q = photos.query;
 
-    var q=photos.query;
-
-    if(q==null || q==''){
-        return;
+    if (q == null || q == "") {
+      return;
     }
 
-    setPhotos({...photos,data:[],status:'loading'})
+    setPhotos({ ...photos, data: [], status: "loading" });
 
-    fetch('https://jsonplaceholder.typicode.com/albums/'+q+'/photos').then(function (response) {
+    fetch("https://jsonplaceholder.typicode.com/albums/" + q + "/photos")
+      .then(function (response) {
         // The API call was successful!
         return response.json();
-    }).then(function (data) {
+      })
+      .then(function (data) {
         // This is the JSON from response
-        setPhotos({data:data,status:'success'})
-        
-    }).catch(function (err) {
+        setPhotos({ data: data, status: "success" });
+      })
+      .catch(function (err) {
         // There was an error loading photos
-        setPhotos({data:[],status:"error"})
-    });
-    
+        setPhotos({ data: [], status: "error" });
+      });
   };
 
   return (
     <div className="app">
       <div className="search-wrapper">
-        <input
-          type="text"
-          className="search"
-          placeholder="Search by album ID"
-          onChange={onSearchChange}
-        />
-        <button onClick={onSearch}>Get photos</button>
+        <form onSubmit={onSearch}>
+          <input
+            type="text"
+            className="search"
+            placeholder="Search by album ID"
+            onChange={onSearchChange}
+          />
+          <button onClick={onSearch}>Get photos</button>
+        </form>
       </div>
 
       <div className="list-wrapper">
         {photos.status == null ? (
-          <p>Write album ID and click the button to get all album photos</p>
-        ):photos.status == 'loading'?<p>Loading album photos, please wait...</p> :photos.status == 'error'?<p>There is an error while loading album photos, try search again</p>: photos.data.length==0?<p>No photos found for your album ID, try another ID</p>: (
+          <p>Write album ID and click the button or press enter to get all album photos.</p>
+        ) : photos.status == "loading" ? (
+          <p>Loading album photos, please wait...</p>
+        ) : photos.status == "error" ? (
+          <p>There is an error while loading album photos, try search again.</p>
+        ) : photos.data.length == 0 ? (
+          <p>No photos found for your album ID, try another ID.</p>
+        ) : (
           <div className="container">
             {photos.data.map((photo) => (
-              <PhotoItem title={photo.title} url={photo.url} key={photo.id}/>
+              <PhotoItem title={photo.title} url={photo.url} key={photo.id} />
             ))}
           </div>
         )}
@@ -64,11 +73,7 @@ function PhotoItem(props) {
 
   return (
     <div className="album-wrapper">
-      <img
-        className="album-image"
-        src={url}
-        alt={title}
-      />
+      <img className="album-image" src={url} alt={title} />
       <p>{title}</p>
     </div>
   );
