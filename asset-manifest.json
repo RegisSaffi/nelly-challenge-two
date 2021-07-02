@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/nelly-challenge-two/static/css/main.88e383ce.chunk.css",
-    "main.js": "/nelly-challenge-two/static/js/main.ce9cb155.chunk.js",
-    "main.js.map": "/nelly-challenge-two/static/js/main.ce9cb155.chunk.js.map",
+    "main.js": "/nelly-challenge-two/static/js/main.bd11ed94.chunk.js",
+    "main.js.map": "/nelly-challenge-two/static/js/main.bd11ed94.chunk.js.map",
     "runtime-main.js": "/nelly-challenge-two/static/js/runtime-main.d2bd54c1.js",
     "runtime-main.js.map": "/nelly-challenge-two/static/js/runtime-main.d2bd54c1.js.map",
     "static/js/2.c33c9f22.chunk.js": "/nelly-challenge-two/static/js/2.c33c9f22.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.d2bd54c1.js",
     "static/js/2.c33c9f22.chunk.js",
     "static/css/main.88e383ce.chunk.css",
-    "static/js/main.ce9cb155.chunk.js"
+    "static/js/main.bd11ed94.chunk.js"
   ]
 }
