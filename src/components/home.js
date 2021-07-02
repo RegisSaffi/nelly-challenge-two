@@ -59,7 +59,7 @@ export default function Home(props) {
         ) : (
           <div className="container">
             {photos.data.map((photo) => (
-              <PhotoItem title={photo.title} url={photo.url} key={photo.id} />
+              <PhotoItem title={photo.title} url={photo.thumbnailUrl} key={photo.id} />
             ))}
           </div>
         )}
